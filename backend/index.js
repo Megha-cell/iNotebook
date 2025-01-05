@@ -5,7 +5,7 @@ var cors = require('cors')
 connectToMongo(); // Establish MongoDB connection
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 //Available Routes
 app.use(cors())
 app.use(express.json())//t be able to use req.body
