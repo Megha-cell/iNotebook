@@ -7,7 +7,7 @@ const Login = (props) => {
   const handleSubmit =async(e)=>{
 
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/auth/login',
+    const response = await fetch(`${process.env.REACT_APP_HOST}/api/auth/login`,
       {
           headers: {
             'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc0YzgzOWE1NDc4OTkzYmI3YTA4NGE0In0sImlhdCI6MTczMzA2NzY3NH0.jhnsZ9WkDZTAvkHVRoTprex1JuDu4iMDmTs459mxkuw',
