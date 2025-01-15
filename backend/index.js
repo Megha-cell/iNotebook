@@ -1,14 +1,30 @@
 require('dotenv').config();
 const connectToMongo = require('./db');
 const express = require('express');
-var cors = require('cors')
+//var cors = require('cors')
+const cors = require('cors');
 
 connectToMongo(); // Establish MongoDB connection
 
 const app = express();
 const port = process.env.PORT || 5000;
 //Available Routes
-app.use(cors({ origin: 'https://i-notebook-one-delta.vercel.app' }))
+const allowedOrigins = [
+  'http://localhost:3000', // Local development
+  'https://i-notebook-lsyj.vercel.app' // Deployed frontend on Vercel
+];
+app.use(cors({
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+//app.use(cors({ origin: 'https://i-notebook-one-delta.vercel.app' }))
 app.use(express.json())//t be able to use req.body
 
 
