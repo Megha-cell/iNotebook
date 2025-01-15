@@ -22,7 +22,7 @@ app.use(cors({
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization','auth-token'],
 }));
 //app.use(cors({ origin: 'https://i-notebook-one-delta.vercel.app' }))
 app.use(express.json())//t be able to use req.body
